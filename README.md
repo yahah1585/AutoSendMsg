@@ -4,7 +4,7 @@
 pip install -r requirements.txt
 
 ### 使用方法
-在main.py中将exe文件路径修改为自己的路径，自行设定发送时间、好友和消息后直接运行main.py，详见代码注释
+在main.py中将exe文件路径`wechat_path/qq_path`修改为自己的路径，自行设定发送时间`send_time`、好友`friend_name`和消息`message`后直接运行`main.py`，详见代码注释
 
 ### 存在的问题
 QQ无法自动获取窗口，原因不明，需要自己保持窗口在顶层，微信没问题
