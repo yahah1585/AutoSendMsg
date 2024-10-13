@@ -37,30 +37,29 @@ class AutoSendMsg:
 
     def page_open(self):  # QQ无法实现这一步，原因不明
         """尝试多种方式来获取主窗口"""
-
         try:
             # 方式1: 使用应用程序的顶层窗口
-            self.wechat_window = self.app.top_window()
-            self.wechat_window.set_focus()
+            self.app_window = self.app.top_window()
+            self.app_window.set_focus()
             print("使用 top_window 成功激活窗口")
         except Exception as e:
             print(f"使用 top_window 激活窗口失败: {e}")
             try:
                 # 方式2: 使用窗口标题的正则表达式匹配
-                self.wechat_window = self.app.window(
+                self.app_window = self.app.window(
                     title_re=f".*{self.app_type}.*")  # 匹配包含应用名的窗口标题(但是好像微信和QQ的窗口标题都不叫WeChat/QQ。。)
-                self.wechat_window.set_focus()
+                self.app_window.set_focus()
                 print("使用 title_re 成功激活窗口")
             except Exception as e:
                 print(f"使用 title_re 激活窗口失败: {e}")
                 try:
                     # 方式3: 使用窗口的类名获取
                     if self.app_type == 'WeChat':
-                        self.wechat_window = self.app.window(class_name="WeChatMainWndForPC")
+                        self.app_window = self.app.window(class_name="WeChatMainWndForPC")
                     elif self.app_type == 'QQ':
-                        self.wechat_window = self.app.window(
+                        self.app_window = self.app.window(
                             class_name="Chrome_RenderWidgetHostHWND")  # 查找窗体发现QQ的窗体类名就叫这个但是还是没用，原因不明
-                    self.wechat_window.set_focus()
+                    self.app_window.set_focus()
                     print("使用 class_name 成功激活窗口")
                 except Exception as e:
                     print(f"使用 class_name 激活窗口失败: {e}")
