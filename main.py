@@ -2,7 +2,6 @@ import schedule
 import time
 from AutoSend import AutoSendMsg
 
-# 创建AutoSendMsg对象并发送消息
 wechat_path = "D:/WeChat/WeChat.exe"  # 微信exe文件路径
 qq_path = "D:/QQNT/QQ.exe"  # QQexe文件路径, QQ无法自动打开窗口，需要保持QQ窗口置于顶层
 auto_send = AutoSendMsg(app_type='WeChat', app_path=wechat_path)  # app_type:微信——WeChat, QQ——QQ
