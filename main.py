@@ -14,17 +14,17 @@ schedule.every().day.at(send_time).do(auto_send.send_message, friend_name, messa
 """ 设定多个时间点给同一个好友发送同一条消息
 send_time = ["09:00", "15:00", "20:00"]
 for i, t in enumerate(send_time):
-    schedule.every().day.at(t).do(auto_send.send_message, friend_name, message)
+    schedule.every().day.at(t).do(auto_send.send_message, friend_name, message, t)
 """
 """ 设定在同一时间点给多个好友发送同一条消息
 friend_name = ["好友1", "好友2", "好友3"]
 for i, friend in enumerate(friend_name):
-    schedule.every().day.at(send_time).do(auto_send.send_message, friend, message)
+    schedule.every().day.at(send_time).do(auto_send.send_message, friend, message, send_time)
 """
 """ 设定在不同时间给好友发送不同消息
 time_message = {"09:00": "起床了吗", "15:00": "去健身吗", "20:00": "打游戏吗"}
 for t, msg in enumerate(time_message):
-    schedule.every().day.at(t).do(auto_send.send_message, friend_name, msg)
+    schedule.every().day.at(t).do(auto_send.send_message, friend_name, msg, t)
 """
 
 if __name__ == "__main__":
