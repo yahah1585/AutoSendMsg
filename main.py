@@ -23,7 +23,7 @@ for i, friend in enumerate(friend_name):
 """
 """ 设定在不同时间给好友发送不同消息
 time_message = {"09:00": "起床了吗", "15:00": "去健身吗", "20:00": "打游戏吗"}
-for t, msg in enumerate(time_message):
+for t, msg in time_message:
     schedule.every().day.at(t).do(auto_send.send_message, friend_name, msg, t)
 """
 
